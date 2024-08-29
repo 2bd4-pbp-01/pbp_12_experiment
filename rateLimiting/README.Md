@@ -5,16 +5,16 @@ Dalam pengembangan aplikasi web, terutama aplikasi yang menghadapi beban tinggi,
 
 ## 2. Konsep dari tiap Algoritma
 ***- Token Bucket***
-Token Bucket menggunakan bucket yang diisi ulang dengan token secara berkala. Setiap permintaan memerlukan token untuk diproses. Jika bucket kosong, permintaan ditunda atau ditolak. Ini memungkinkan penanganan lonjakan mendadak dalam permintaan selama ada token yang tersedia, ideal untuk pola lalu lintas yang tidak teratur.
+menggunakan bucket yang diisi ulang dengan token secara berkala. Setiap permintaan memerlukan token untuk diproses. Jika bucket kosong, permintaan ditunda atau ditolak. Ini memungkinkan penanganan lonjakan mendadak dalam permintaan selama ada token yang tersedia, ideal untuk pola lalu lintas yang tidak teratur.
 
 ***- Leaky Bucket***
-Leaky Bucket mengumpulkan permintaan dalam bucket yang memiliki lubang untuk mengeluarkan permintaan dengan kecepatan tetap. Jika bucket penuh, permintaan tambahan akan ditunda. Ini memastikan aliran permintaan yang stabil dan mencegah lonjakan besar, ideal untuk aplikasi yang memerlukan aliran lalu lintas yang konsisten.
+mengumpulkan permintaan dalam bucket yang memiliki lubang untuk mengeluarkan permintaan dengan kecepatan tetap. Jika bucket penuh, permintaan tambahan akan ditunda. Ini memastikan aliran permintaan yang stabil dan mencegah lonjakan besar, ideal untuk aplikasi yang memerlukan aliran lalu lintas yang konsisten.
 
 ***- Fixed Window***
-Fixed Window membatasi jumlah permintaan dalam jendela waktu tetap (misalnya, satu menit). Setiap jendela waktu dihitung ulang untuk batas permintaan baru. Mudah diimplementasikan tetapi bisa menyebabkan lonjakan tajam pada awal jendela waktu baru, cocok untuk pola lalu lintas yang stabil.
+membatasi jumlah permintaan dalam jendela waktu tetap (misalnya, satu menit). Setiap jendela waktu dihitung ulang untuk batas permintaan baru. Mudah diimplementasikan tetapi bisa menyebabkan lonjakan tajam pada awal jendela waktu baru, cocok untuk pola lalu lintas yang stabil.
 
 ***- Sliding Window***
-Sliding Window menggunakan jendela waktu yang bergerak untuk memantau permintaan secara dinamis. Ini memberikan kontrol yang lebih halus atas aliran permintaan dan menghindari lonjakan tajam pada batas jendela tetap, cocok untuk aplikasi dengan pola lalu lintas yang fluktuatif tetapi lebih kompleks untuk diimplementasikan.
+menggunakan jendela waktu yang bergerak untuk memantau permintaan secara dinamis. Ini memberikan kontrol yang lebih halus atas aliran permintaan dan menghindari lonjakan tajam pada batas jendela tetap, cocok untuk aplikasi dengan pola lalu lintas yang fluktuatif tetapi lebih kompleks untuk diimplementasikan.
 
 ## 3. Perbandingan Keefektifan
 Token Bucket: Paling efektif dalam menangani lonjakan mendadak karena token yang tersedia memungkinkan penundaan atau pemrosesan permintaan dalam batas token. Ideal untuk sistem yang memerlukan penanganan burst traffic.
