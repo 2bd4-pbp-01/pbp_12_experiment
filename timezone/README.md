@@ -1,15 +1,9 @@
-# timezone-demo
+# Multi-Timezone Problem
 
-To install dependencies:
+## Pengertian
 
-```bash
-bun install
-```
+## Skenario
 
-To run:
+## Solusi
 
-```bash
-bun run main.ts
-```
-
-This project was created using `bun init` in bun v1.1.26. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Kesimpulan
