@@ -87,59 +87,27 @@ Output:
 
 Dapat dilihat pada hasil output, ketika berhadapan dengan race condition, salah satu dampak yang bisa terlihat adalah hasil yang tidak konsisten atau bahkan tidak valid, seperti jumlah barang yang menjadi negatif.
 
-
 # Navigasi ke Dokumen Lain
 
-<style>
-  .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    margin: 20px 0;
-  }
-  .box {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 30%;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s;
-    margin-right: 10px; /* Tambahkan jarak antar box */
-  }
-  .box:last-child {
-    margin-right: 0; /* Hapus margin untuk kotak terakhir */
-  }
-  .box:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
-  }
-  .box a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .box a:hover {
-    color: #007bff;
-  }
-</style>
+<div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: nowrap;">
 
-<div class="container">
-  <div class="box">
-    <a href="/Double Spending/readme.md">Dokumen 1</a>
+  <div style="background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 30%; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, transform 0.3s; flex-grow: 1;">
+    <a href="./Double Spending/readme.md" style="text-decoration: none; color: #333; font-size: 18px; font-weight: bold;">Dokumen 1</a>
     <p>Deskripsi atau informasi tambahan tentang Dokumen 1.</p>
   </div>
-  <div class="box">
-    <a href="/File Corruption//readme.md">Dokumen 2</a>
+
+  <div style="background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 30%; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, transform 0.3s; flex-grow: 1;">
+    <a href="./File Corruption/readme.md" style="text-decoration: none; color: #333; font-size: 18px; font-weight: bold;">Dokumen 2</a>
     <p>Deskripsi atau informasi tambahan tentang Dokumen 2.</p>
   </div>
-  <div class="box">
-    <a href="/Inconsistent Data/readme.md">Dokumen 3</a>
+
+  <div style="background-color: #f2f2f2; border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 30%; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, transform 0.3s; flex-grow: 1;">
+    <a href="./Inconsistent Data/readme.md" style="text-decoration: none; color: #333; font-size: 18px; font-weight: bold;">Dokumen 3</a>
     <p>Deskripsi atau informasi tambahan tentang Dokumen 3.</p>
   </div>
+
 </div>
+
 
 
 
