@@ -6,7 +6,7 @@ Null reference adalah konsep dalam pemrograman dimana sebuah variabel referensi 
 
 Istilah ini dipopulerkan oleh Sir Tony Hoare, seorang ilmuwan komputer yang menciptakan konsep null reference pada tahun 1965 saat mengembangkan bahasa pemrograman ALGOL W. Ia memperkenalkan null reference sebagai cara mudah untuk menunjukkan bahwa sebuah referensi tidak menunjuk ke objek apapun. Pada awalnya, itu tampak seperti solusi sederhana, tetapi seiring waktu, masalah yang ditimbulkannya menjadi sangat signifikan.
 
-> [!TIP] Info
+> [!NOTE]
 > Istilah "The Billion Dollar Mistake" merujuk pada perkiraan bahwa kesalahan ini telah menyebabkan kerugian yang sangat besar, baik dari segi biaya pengembangan, pemeliharaan, perbaikan bug, hingga kegagalan sistem. Jika ditotal dari seluruh perangkat lunak di dunia yang terkena dampak, nilainya bisa mencapai miliaran dolar.
 
 ## Skenario
