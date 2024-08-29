@@ -17,10 +17,13 @@ membatasi jumlah permintaan dalam jendela waktu tetap (misalnya, satu menit). Se
 menggunakan jendela waktu yang bergerak untuk memantau permintaan secara dinamis. Ini memberikan kontrol yang lebih halus atas aliran permintaan dan menghindari lonjakan tajam pada batas jendela tetap, cocok untuk aplikasi dengan pola lalu lintas yang fluktuatif tetapi lebih kompleks untuk diimplementasikan.
 
 ## 3. Perbandingan Keefektifan
-Token Bucket: Paling efektif dalam menangani lonjakan mendadak karena token yang tersedia memungkinkan penundaan atau pemrosesan permintaan dalam batas token. Ideal untuk sistem yang memerlukan penanganan burst traffic.
-Leaky Bucket: Baik untuk menjaga aliran permintaan yang stabil dan mencegah lonjakan besar. Kurang fleksibel dalam menghadapi lonjakan mendadak.
-Fixed Window: Efektif dalam skenario dengan pola lalu lintas yang stabil, tetapi dapat menyebabkan lonjakan tajam pada awal jendela waktu baru.
-Sliding Window: Memberikan kontrol granular terbaik dan menghindari lonjakan tajam. Cocok untuk aplikasi dengan pola lalu lintas fluktuatif tetapi lebih kompleks untuk diimplementasikan.
+***Token Bucket:*** Paling efektif dalam menangani lonjakan mendadak karena token yang tersedia memungkinkan penundaan atau pemrosesan permintaan dalam batas token. Ideal untuk sistem yang memerlukan penanganan burst traffic.
+
+***Leaky Bucket:*** Baik untuk menjaga aliran permintaan yang stabil dan mencegah lonjakan besar. Kurang fleksibel dalam menghadapi lonjakan mendadak.
+
+***Fixed Window:*** Efektif dalam skenario dengan pola lalu lintas yang stabil, tetapi dapat menyebabkan lonjakan tajam pada awal jendela waktu baru.
+
+***Sliding Window:*** Memberikan kontrol granular terbaik dan menghindari lonjakan tajam. Cocok untuk aplikasi dengan pola lalu lintas fluktuatif tetapi lebih kompleks untuk diimplementasikan.
 
 ## 4. Kesimpulan
 Token Bucket adalah pilihan terbaik untuk aplikasi yang menghadapi lonjakan mendadak karena kemampuannya untuk menangani burst traffic dengan memanfaatkan token yang tersedia.
