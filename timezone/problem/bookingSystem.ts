@@ -42,9 +42,11 @@ export class FlightBookingSystem {
   public getBookingInfo(booking: Booking): string {
     const departureTime = new Date(booking.flight.departureTime);
     const arrivalTime = new Date(booking.flight.arrivalTime);
+    const duration = this.calculateFlightDuration(booking.flight);
 
     return `Departure: ${departureTime.toLocaleString()} (${booking.flight.origin})
-Arrival: ${arrivalTime.toLocaleString()} (${booking.flight.destination})`;
+Arrival: ${arrivalTime.toLocaleString()} (${booking.flight.destination})
+Duration: ${duration}`;
   }
 }
 
