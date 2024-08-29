@@ -1,1 +1,1 @@
-# Pemahaman dan penyelesaian memory leak dengan bahasa Python
+# Pemahaman dan penyelesaian memory leak dengan bahasa C++
