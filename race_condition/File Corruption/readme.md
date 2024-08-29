@@ -10,6 +10,14 @@ Contoh ini menunjukkan bagaimana race condition dapat menyebabkan korupsi file d
 
 ### Kode Go untuk Mensimulasikan Korupsi File
 
+### Skenario
+* Tujuan: Mengamati efek race condition pada file ketika beberapa goroutine menulis ke file secara bersamaan tanpa mekanisme penguncian.
+* Langkah Eksperimen:
+Jalankan kode Go tanpa mekanisme penguncian (race condition).
+Periksa file output (output.txt) untuk melihat hasil penulisan dan korupsi yang mungkin terjadi.
+Jalankan kode Go dengan mekanisme penguncian menggunakan sync.Mutex untuk memastikan hanya satu goroutine yang menulis pada satu waktu.
+Bandingkan hasil dari kedua eksperimen untuk mengamati perbedaan dalam integritas file.
+
 ```go
 package main
 
@@ -54,11 +62,11 @@ func main() {
 
 ### Output 
 * Output yang diharapkan 
-![1724957985361](/output/golang_race2_fileCorrupt/image.png)
+![1724957985361](../output/golang_race2_fileCorrupt/image.png)
 
 
 * Pada file corrupt
-![1724958037433](/output/golang_race2_fileCorrupt/outputerr.png)
+![1724958037433](../output/golang_race2_fileCorrupt/outputerr.png)
 
 Setelah melakukan berkali-kali lipat percobaan ditemukan satu file yang rusak. Tanpa mekanisme penguncian, beberapa goroutine dapat menulis ke file pada saat yang bersamaan, menyebabkan korupsi file. Data yang ditulis mungkin tumpang tindih atau rusak, sehingga file output.txt  berisi byte acak yang tidak dapat diprediksi.
 
@@ -115,6 +123,12 @@ func main() {
 }
 ```
 
+
+
 Locking (Mengunci): Menggunakan lock dapat memastikan hanya satu thread atau goroutine yang bisa mengakses file. seperti contoh dalam bahasa python dengan penggunaan lock.acquire() atau mutex.Lock() di Go untuk 
 
 Unlocking (Membuka Kunci): Menggunakan Unlocking setelah operasi selesai, agar thread lain bisa mengakses file untuk menhgindari race condition pada file corrupt seperti penggunaan lock.release() pada python atau mutex.Unlock() di Go.
+
+# Kesimpulan
+
+Race condition dalam konteks file dapat menyebabkan korupsi file ketika beberapa proses atau goroutine mencoba mengakses dan memodifikasi file yang sama secara bersamaan tanpa mekanisme penguncian yang tepat. Dalam contoh ini, race condition menyebabkan data dalam file menjadi tidak konsisten atau rusak karena banyak goroutine menulis ke file secara bersamaan.
