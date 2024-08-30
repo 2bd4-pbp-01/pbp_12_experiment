@@ -1,6 +1,6 @@
+Tanggal Eksperimen: 28 Agustus 2024
 # Laporan: Analisis dan Solusi Insecure Deserialization dalam Konteks Transaksi
 
----
 
 ## 1. Definisi Masalah dan Hubungannya dengan Tema Transaksi
 
