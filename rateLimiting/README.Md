@@ -20,16 +20,16 @@ menggunakan jendela waktu yang bergerak untuk memantau permintaan secara dinamis
 ## 3. Hasil Analisis
 Dari eksperimen yang telah dilakukan, ditemukan bahwa :
 
-###a. Fixed Window
-_fixed window_ karena algoritma ini mereset batas permintaan dengan acuan jam, maka terdapat celah. Misalnya dalam percobaan yang saya lakukan, tiap satu sesi diatur 1 menit dengan batas permintaan sebanyak 10 kali, dan saya melakukan permintaan pada jam 10.40 lebih 55 detik, ternyata terdapat celah yang bisa membuat server kewalahan. Ini terjadi ketika saya melakukan permintaan sebanyak 10 kali sekaligus 5 detik sebelum sesi direset. Setelah waktu menunjukkan pukul 10.41, otomatis sesi baru akan muncul dan batas permintaan direset, saya bisa langsung melakukan permintaan lagi sebanyak 1 kali secara sekaligus. ini yang membuat server bisa kewalahan, sebenarnya jika dihitung waktunya. dalam 10 detik sudah ada 20 permintaan, sehingga algoritma ini kurang efektif dalam membatasi permintaan.
+***a. Fixed Window***
+Karena algoritma ini mereset batas permintaan dengan acuan jam, maka terdapat celah. Misalnya dalam percobaan yang saya lakukan, tiap satu sesi diatur 1 menit dengan batas permintaan sebanyak 10 kali, dan saya melakukan permintaan pada jam 10.40 lebih 55 detik, ternyata terdapat celah yang bisa membuat server kewalahan. Ini terjadi ketika saya melakukan permintaan sebanyak 10 kali sekaligus 5 detik sebelum sesi direset. Setelah waktu menunjukkan pukul 10.41, otomatis sesi baru akan muncul dan batas permintaan direset, saya bisa langsung melakukan permintaan lagi sebanyak 1 kali secara sekaligus. ini yang membuat server bisa kewalahan, sebenarnya jika dihitung waktunya. dalam 10 detik sudah ada 20 permintaan, sehingga algoritma ini kurang efektif dalam membatasi permintaan.
 
-###b. Sliding Window
-Berbeda dengan fixed window, _sliding window_ ini bekerja seperti stopwatch. alih-alih membatasi rate dengan patokan jam, sliding window menghitung waktu per sesinya setelah pengguna melakukan permintaan. Misalnya dalam percobaan ini, dengan tiap sesi diatur 1 menit dengan batas permintaan sebanyak 10 kali per sesinya, saya melakukan percobaan pada jam 9.30 lebih 20 detik, untuk sesi berikutnya akan direset pada jam 9.31 lebih 20 detik. Sehingga algoritma ini lebih fleksibel dan tidak ada kecacatan seperti fixed window yang terpaku pada jam. 
+***b. Sliding Window***
+Berbeda dengan fixed window, sliding window ini bekerja seperti stopwatch. alih-alih membatasi rate dengan patokan jam, sliding window menghitung waktu per sesinya setelah pengguna melakukan permintaan. Misalnya dalam percobaan ini, dengan tiap sesi diatur 1 menit dengan batas permintaan sebanyak 10 kali per sesinya, saya melakukan percobaan pada jam 9.30 lebih 20 detik, untuk sesi berikutnya akan direset pada jam 9.31 lebih 20 detik. Sehingga algoritma ini lebih fleksibel dan tidak ada kecacatan seperti fixed window yang terpaku pada jam. 
 
-###c. Token Bucket
+***c. Token Bucket***
 Hasil eksperimen dengan _token bucket_ cukup berbeda dengan fixed window dan sliding window. Tidak seperti dua algoritma sebelumnya yang memakai konsep window (sesi), token bucket ini membatasi permintaan sesuai dengan token yang tersedia. Jika token dalam ember sudah habis dan belum ada token baru yang diisi, maka permintaan akan ditunda. Ember memiliki penyimpanan yang bisa dibatasi. Misalkan eksperimen saya dengan kapasitas ember 10 token, pengisian 1 token per 5 detik dan delay permintaan jika token sudah habis adalah 10 detik. Maka, 10 permintaan saya memakai token berjalan dengan lancar, tetapi saat permintaan ke 11 kemudian terjadi penundaan 10 detik. Kemudian saat delay sudah selesai, saya hanya bisa melakukan 2 permintaan karena token terisi tiap 5 detik dan delaynya 10 detik.
 
-###d. Leaky Bucket 
+***d. Leaky Bucket*** 
 Hasil eksperimen dengan _leaky bucket_ ini hampir mirip dengan token bucket. Tetapi bedanya pada algoritma ini yang disimpan dalam ember adalah permintaan dari pengguna, ember ini memiliki kapasitas tertentu, dan kemudian dikeluarkan satu-satu dengan teratur. 
 
 ## 4. Perbandingan Keefektifan
