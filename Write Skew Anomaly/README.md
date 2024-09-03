@@ -21,15 +21,28 @@ Dalam konteks transaksi, terutama dalam basis data yang mendukung transaksi para
 
 ---
 
-## 3. Cara Kerja Solusinya Dibagi Per Case
+## 3. Cara Kerja Solusinya Per Case
+
+### Masalah
+<p align="center">
+<img src="Diagram\Diagram Write Skew Case 1.png">
+</p>
 
 ### Case 1: Pessimistic Locking
 - **Masalah:** Dua transaksi paralel mencoba memperbarui catatan yang sama, yang dapat menyebabkan kondisi akhir yang tidak konsisten jika tidak ada isolasi.
 - **Solusi:** Dengan **Pessimistic Locking**, catatan yang akan diubah oleh satu transaksi dikunci sehingga transaksi lain harus menunggu hingga transaksi pertama selesai sebelum melakukan perubahan. Ini mencegah write skew dengan memastikan hanya satu transaksi yang dapat mengubah data pada satu waktu.
 
+<p align="center">
+<img src="Diagram\Diagram Write Skew Solution 1.png">
+</p>
+
 ### Case 2: Optimistic Concurrency Control (OCC)
 - **Masalah:** Transaksi berjalan secara paralel tanpa mengunci catatan, dan pada akhir transaksi, perubahan dari kedua transaksi digabungkan, yang dapat menyebabkan pelanggaran aturan bisnis.
 - **Solusi:** **Optimistic Concurrency Control** (OCC) mengizinkan transaksi berjalan secara paralel tanpa kunci, tetapi pada akhir transaksi, data yang digunakan diverifikasi untuk melihat apakah ada perubahan sejak transaksi dimulai. Jika ada perubahan, transaksi dibatalkan atau diulang, mencegah ketidakkonsistenan.
+
+<p align="center">
+<img src="Diagram\Diagram Write Skew Solution 2.png">
+</p>
 
 ---
 
