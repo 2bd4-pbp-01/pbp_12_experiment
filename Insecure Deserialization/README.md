@@ -1,12 +1,12 @@
-Tanggal Eksperimen: 28 Agustus 2024
-# Laporan: Analisis dan Solusi Insecure Deserialization dalam Konteks Transaksi
+Berikut adalah versi laporan dengan istilah-istilah programming dikembalikan ke bahasa aslinya:
 
+---
 
 ## 1. Definisi Masalah dan Hubungannya dengan Tema Transaksi
 
-**Insecure Deserialization** adalah kerentanan keamanan yang terjadi ketika data yang diserialisasi (dikodekan menjadi format yang dapat disimpan atau ditransmisikan) didekodekan kembali (deserialisasi) tanpa validasi atau kontrol yang memadai. Hal ini memungkinkan penyerang untuk menyisipkan data yang berbahaya ke dalam proses deserialisasi, yang kemudian dapat dieksekusi sebagai kode berbahaya.
+**Insecure Deserialization** adalah kerentanan keamanan yang terjadi ketika data yang diserialisasi (encoded menjadi format yang dapat disimpan atau ditransmisikan) didekodekan kembali (deserialized) tanpa validasi atau kontrol yang memadai. Hal ini memungkinkan penyerang untuk menyisipkan data yang berbahaya ke dalam proses deserialization, yang kemudian dapat dieksekusi sebagai kode berbahaya.
 
-Dalam konteks transaksi, terutama transaksi digital atau komunikasi data, deserialization digunakan untuk mentransfer objek antara sistem yang berbeda. Jika proses deserialisasi ini tidak aman, penyerang dapat mengubah data transaksi untuk mengeksekusi perintah berbahaya, mengakses data sensitif, atau memanipulasi transaksi itu sendiri, yang dapat menyebabkan kehilangan data, pencurian, atau kompromi integritas transaksi.
+Dalam konteks transaksi, terutama transaksi digital atau komunikasi data, deserialization digunakan untuk mentransfer objek antara sistem yang berbeda. Jika proses deserialization ini tidak aman, penyerang dapat mengubah data transaksi untuk mengeksekusi perintah berbahaya, mengakses data sensitif, atau memanipulasi transaksi itu sendiri, yang dapat menyebabkan kehilangan data, pencurian, atau kompromi integritas transaksi.
 
 ---
 
@@ -14,28 +14,55 @@ Dalam konteks transaksi, terutama transaksi digital atau komunikasi data, deseri
 
 **Alasan Masalah Terjadi:**
 - **Kurangnya Validasi:** Saat data yang telah diserialisasi di-deserialize kembali tanpa validasi, data tersebut dapat dieksploitasi. Misalnya, metode `__reduce__` dalam Python memungkinkan penyerang untuk menentukan cara sebuah objek di-deserialize, yang bisa memicu eksekusi kode berbahaya.
-- **Kepercayaan Terhadap Data Eksternal:** Sistem yang terlalu mempercayai data yang diterima dari luar, seperti dari pengguna atau sistem lain, tanpa verifikasi yang memadai, rentan terhadap eksploitasi.
+- **Reliability Terhadap Data Eksternal:** Sistem yang terlalu mempercayai data yang diterima dari luar, seperti dari pengguna atau sistem lain, tanpa verifikasi yang memadai, rentan terhadap eksploitasi.
 
 **Pentingnya Masalah:**
 - **Keamanan Transaksi:** Dalam transaksi digital, validitas dan integritas data adalah kunci. Insecure deserialization dapat digunakan untuk memanipulasi transaksi, mencuri informasi, atau melakukan tindakan berbahaya lainnya.
 - **Dampak Finansial:** Exploit dari kerentanan ini bisa menyebabkan kerugian finansial besar, baik dari pencurian langsung maupun dari biaya mitigasi dan pemulihan.
-- **Kepercayaan Pengguna:** Jika pengguna atau klien merasa bahwa sistem tidak aman, kepercayaan mereka akan terganggu, yang dapat merusak reputasi organisasi atau bisnis.
+- **Reliability Pengguna:** Jika pengguna atau klien merasa bahwa sistem tidak aman, kepercayaan mereka akan terganggu, yang dapat merusak reputasi organisasi atau bisnis.
 
 ---
 
-## 3. Cara Kerja Solusinya Dibagi Per Case
+## 3. Cara Kerja Solusinya Per Case
 
 ### Case 1: Kompleksitas Eksploitasi dengan `pickle`
-- **Masalah:** Data yang tampaknya tidak berbahaya dapat disusupi dengan kelas berbahaya (`ExploitChain`), yang memungkinkan eksekusi perintah sistem saat deserialisasi.
-- **Solusi:** Mengganti penggunaan `pickle` dengan JSON. JSON tidak mendukung serialisasi objek yang kompleks dan tidak memungkinkan eksekusi kode, membuatnya lebih aman untuk transaksi yang melibatkan deserialisasi.
+- **Masalah:** Data yang tampaknya tidak berbahaya dapat disusupi dengan kelas berbahaya (`ExploitChain`), yang memungkinkan eksekusi perintah sistem saat deserialization.
+
+<p align="center">
+<img width="75%" img src="Diagram\Diagram Insecure Deserialization Case 1.png">
+</p>
+
+- **Solusi:** Mengganti penggunaan `pickle` dengan JSON. JSON tidak mendukung serialisasi objek yang kompleks dan tidak memungkinkan eksekusi kode, membuatnya lebih aman untuk transaksi yang melibatkan deserialization.
+
+<p align="center">
+<img width="50%" img src="Diagram\Diagram Insecure Deserialization Solution 1.png">
+</p>
 
 ### Case 2: Insecure Deserialization dengan `pickle`
-- **Masalah:** Kelas berbahaya (`MaliciousClass`) dapat dieksekusi saat deserialisasi dengan `pickle`, menjalankan perintah yang tidak diinginkan.
+- **Masalah:** Kelas berbahaya (`MaliciousClass`) dapat dieksekusi saat deserialization dengan `pickle`, menjalankan perintah yang tidak diinginkan.
+
+<p align="center">
+<img width="75%" img src="Diagram\Diagram Insecure Deserialization Case 2.png">
+</p>
+
 - **Solusi:** Menggunakan `SafeUnpickler` untuk membatasi deserialization hanya pada kelas-kelas tertentu yang diizinkan. Dengan `SafeUnpickler`, hanya kelas yang terdaftar secara eksplisit yang dapat di-deserialize, mencegah kelas berbahaya untuk dieksekusi.
+
+<p align="center">
+<img width="75%" img src="Diagram\Diagram Insecure Deserialization Solution 2.png">
+</p>
 
 ### Case 3: Deserialization dengan `SafeUnpickler` untuk Kompleksitas Eksploitasi
 - **Masalah:** Penyerang dapat membuat eksploitasi yang kompleks menggunakan metode `__reduce__` untuk menyisipkan perintah berbahaya yang dieksekusi selama deserialization.
+
+<p align="center">
+<img width="75%" img src="Diagram\Diagram Insecure Deserialization Case 3.png">
+</p>
+
 - **Solusi:** Sama seperti solusi di Case 2, `SafeUnpickler` digunakan untuk memastikan bahwa hanya kelas tertentu yang dapat di-deserialize. Ini mencegah eksekusi kode berbahaya, bahkan jika eksploitasi yang kompleks digunakan.
+
+<p align="center">
+<img width="75%" img src="Diagram\Diagram Insecure Deserialization Solution 3.png">
+</p>
 
 ---
 
@@ -46,7 +73,7 @@ Dalam konteks transaksi, terutama transaksi digital atau komunikasi data, deseri
 - **Kemudahan Implementasi:** Mudah diimplementasikan karena JSON adalah format standar yang didukung luas, dan sebagian besar bahasa pemrograman memiliki pustaka bawaan untuk menangani JSON.
 
 **Solusi 2: SafeUnpickler**
-- **Efisiensi:** SafeUnpickler efektif dalam situasi di mana `pickle` harus digunakan, tetapi dengan perlindungan tambahan. Ada sedikit overhead dalam hal kinerja karena setiap kelas harus di-whitelist secara manual.
+- **Efisiensi:** `SafeUnpickler` efektif dalam situasi di mana `pickle` harus digunakan, tetapi dengan perlindungan tambahan. Ada sedikit overhead dalam hal kinerja karena setiap kelas harus di-whitelist secara manual.
 - **Kemudahan Implementasi:** Implementasinya memerlukan pemahaman yang lebih dalam tentang proses deserialization dan klasifikasi objek yang aman. Namun, ini memberikan kontrol yang ketat terhadap apa yang bisa di-deserialize.
 
 **Perbandingan:**
@@ -64,4 +91,6 @@ Dalam konteks transaksi, terutama transaksi digital atau komunikasi data, deseri
 **Sesudah Implementasi Solusi:**
 - **Keamanan yang Ditingkatkan:** Deserialization menjadi lebih aman, baik melalui penggunaan JSON yang tidak mendukung eksekusi kode, atau melalui `SafeUnpickler` yang membatasi deserialization hanya untuk kelas yang aman.
 - **Proteksi Terhadap Eksploitasi:** Risiko eksekusi kode berbahaya selama deserialization diminimalkan, menjaga integritas transaksi dan data.
-- **Kepercayaan yang Lebih Baik:** Dengan mengurangi risiko keamanan, kepercayaan pengguna dan klien terhadap sistem akan meningkat, menjaga reputasi dan operasi bisnis.
+- **Reliability yang Lebih Baik:** Dengan mengurangi risiko keamanan, kepercayaan pengguna dan klien terhadap sistem akan meningkat, menjaga reputasi dan operasi bisnis.
+
+---
