@@ -1,11 +1,12 @@
-# 12 Experiment - Kelompok 1
+# 12 Eksperimen - Kelompok 1
 
 **Mata Kuliah: Prinsip Bahasa Pemrograman [PR]** </br>
 **Kelas: 2B D4TI**
+**Tahun: 2024**
 
 ## Tema Umum: Transaksi
 
-## Experiments
+## Tabel Experimen
 
 | No. | Kontributor                                   | Topik                                                                 | Eksperimen                                                                                                            |
 | --- | --------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
