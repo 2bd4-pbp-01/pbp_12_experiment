@@ -48,6 +48,9 @@ Dalam konteks bahasa C++, ada beberapa pendekatan untuk mengatasi masalah *memor
 - **Kekurangan:** Rentan terhadap kesalahan manusia, seperti lupa membebaskan memori atau mencoba membebaskan memori yang sudah dibebaskan sebelumnya, yang dapat menyebabkan kebocoran memori atau bahkan kesalahan yang lebih serius seperti *dangling pointer*.
 
 ### 5.2. Penggunaan Smart Pointers
+
+![TrxMemLeakSmort](https://github.com/user-attachments/assets/6ad29682-f819-41f3-b10c-dd9beccab11d)
+
 - **Deskripsi:** *Smart pointers* seperti `std::unique_ptr` atau `std::shared_ptr` secara otomatis mengelola alokasi dan pembebasan memori, membebaskan pengembang dari tanggung jawab manual.
 - **Kelebihan:** Mengurangi risiko *memory leak* secara signifikan karena memori dibebaskan secara otomatis ketika tidak ada lagi yang merujuk pada objek tersebut.
 - **Kekurangan:** Meskipun sangat berguna, *smart pointers* memperkenalkan sedikit overhead dan memerlukan pengembang untuk memahami cara penggunaannya dengan benar, terutama dalam konteks yang lebih kompleks seperti siklus referensi.
