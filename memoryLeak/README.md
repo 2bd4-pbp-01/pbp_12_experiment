@@ -28,16 +28,29 @@ Dalam C++, memori dialokasikan secara dinamis menggunakan operator `new` dan har
 - **Penggunaan Struktur Data yang Kompleks:** Menggunakan struktur data seperti vektor atau daftar untuk menyimpan pointer ke objek dinamis tanpa memastikan bahwa memori yang diacu oleh pointer-pointernya dibebaskan setelah tidak digunakan.
 - **Manajemen Memori yang Buruk:** Kesalahan dalam manajemen memori, seperti kegagalan untuk menghapus objek dalam destructor atau tidak menangani kasus pengecualian dengan baik, juga dapat menyebabkan *memory leak*.
 
+Berikut adalah flowchart proses terjadinya flowchart dalam transaksi:
+
+![TrxMemLeak](https://github.com/user-attachments/assets/ae7f7fb0-209a-40f2-aad9-dc3f01cc0caf)
+
+
+
+
 ## 5. Perbandingan Solusi untuk Mengatasi Memory Leak
 
 Dalam konteks bahasa C++, ada beberapa pendekatan untuk mengatasi masalah *memory leak*:
 
 ### 5.1. Pembebasan Memori Manual
+
+![TrxMemLeakFree](https://github.com/user-attachments/assets/4ac42075-06a3-4aac-9973-f2f8d65d5925)
+
 - **Deskripsi:** Pendekatan ini mengharuskan pengembang untuk secara manual membebaskan memori yang telah dialokasikan dengan `new` menggunakan `delete`.
 - **Kelebihan:** Memberikan kontrol penuh kepada pengembang atas kapan dan bagaimana memori dibebaskan.
 - **Kekurangan:** Rentan terhadap kesalahan manusia, seperti lupa membebaskan memori atau mencoba membebaskan memori yang sudah dibebaskan sebelumnya, yang dapat menyebabkan kebocoran memori atau bahkan kesalahan yang lebih serius seperti *dangling pointer*.
 
 ### 5.2. Penggunaan Smart Pointers
+
+![TrxMemLeakSmort](https://github.com/user-attachments/assets/6ad29682-f819-41f3-b10c-dd9beccab11d)
+
 - **Deskripsi:** *Smart pointers* seperti `std::unique_ptr` atau `std::shared_ptr` secara otomatis mengelola alokasi dan pembebasan memori, membebaskan pengembang dari tanggung jawab manual.
 - **Kelebihan:** Mengurangi risiko *memory leak* secara signifikan karena memori dibebaskan secara otomatis ketika tidak ada lagi yang merujuk pada objek tersebut.
 - **Kekurangan:** Meskipun sangat berguna, *smart pointers* memperkenalkan sedikit overhead dan memerlukan pengembang untuk memahami cara penggunaannya dengan benar, terutama dalam konteks yang lebih kompleks seperti siklus referensi.

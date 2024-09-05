@@ -2,6 +2,10 @@
   "name": "null-reference-demo",
   "module": "main.ts",
   "type": "module",
+  "scripts": {
+    "start": "bun run main.ts",
+    "test": "bun test ./tests.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -9,3 +13,4 @@
     "typescript": "^5.0.0"
   }
 }
+

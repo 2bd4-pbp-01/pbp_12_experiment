@@ -2,6 +2,8 @@
 
 ## Overview Masalah
 
+![Time Zones of the World](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_Time_Zones_Map.svg/1920px-World_Time_Zones_Map.svg.png)
+
 Timezone atau zona waktu seringkali menjadi hal yang terlupakan
 ketika mengembangkan aplikasi/software. Terutama pada aplikasi/
 software yang memiliki pengguna dari berbagai daerah dengan zona
@@ -13,6 +15,11 @@ yang berbeda sehingga representasi waktu yang digunakan dapat konsisten.
 Studi kasus dimulai dari hal yang sederhana yaitu dengan menentukan
 tipe dan struktur data kemudian, diikuti dengan pembuatan function/method
 untuk penyelarasan atau sinkronisasi waktu.
+
+## Prana Menarik
+
+- [Dealing Timezones](https://medium.com/@vivekmadurai/how-to-deal-with-date-and-time-across-time-zones-39b1bd747f35)
+- [Handling Multi-Timezone (Youtube - Bahasa Indonesia)](https://youtu.be/nEOEvWm5yPA?si=vtay4AvJef4QuirH)
 
 ## Skenario
 

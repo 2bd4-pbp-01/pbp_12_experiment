@@ -40,6 +40,27 @@ Studi kasus ini menunjukkan bahwa dengan sedikit modifikasi dalam urutan pengunc
 
 Eksperimen ini menunjukkan bagaimana penguncian sumber daya dalam urutan yang konsisten merupakan strategi yang efektif untuk menghindari deadlock dalam aplikasi yang menggunakan threading di Java.
 
+---
+
+## Urutan Proses
+
+### Urutan Proses Masalah Deadlock
+- Masalah deadlock, dimana 2 atau lebih proses/thread saling menunggu satu sama lain untuk melepaskan resource
+
+ <p align="center">
+ <img src="flowchart\Deadlock Problem.png">
+ </p>
+
+
+### Urutan Proses Penyelesaian Masalah Deadlock Menggunakan Orderly Locking
+
+- Penyelesaian menggunakan Orderly Locking, salah 1 thread memulai proses terlebih dahulu hingga mengunci resource yang ada, lalu dilanjut Thread lainnya untuk memulai proses locking
+
+<p align="center">
+ <img src="flowchart\Deadlock Solution.png">
+ </p>
+
+---
 
 ## Eksperimen 2 : Perbandingan antara program DeadlockPrevention dalam Bahasa Java dengan Bahasa Python (AHMAD)
 Perbandingan antara program Deadlock Prevention dalam bahasa Java dan Python dapat dilihat dari beberapa aspek utama, seperti pengelolaan thread, mekanisme penguncian, penanganan sinkronisasi, dan gaya pemrograman. Berikut adalah perbandingannya:

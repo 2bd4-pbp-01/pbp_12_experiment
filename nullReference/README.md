@@ -6,8 +6,15 @@ Null reference adalah konsep dalam pemrograman dimana sebuah variabel referensi 
 
 Istilah ini dipopulerkan oleh Sir Tony Hoare, seorang ilmuwan komputer yang menciptakan konsep null reference pada tahun 1965 saat mengembangkan bahasa pemrograman ALGOL W. Ia memperkenalkan null reference sebagai cara mudah untuk menunjukkan bahwa sebuah referensi tidak menunjuk ke objek apapun. Pada awalnya, itu tampak seperti solusi sederhana, tetapi seiring waktu, masalah yang ditimbulkannya menjadi sangat signifikan.
 
+![example reference](https://reactiveprogramming.io/_next/image?url=%2Fbooks%2Fpatterns%2Fimg%2Fpatterns%2Fnull-object.png&w=1920&q=75)
+
 > [!NOTE]
 > Istilah "The Billion Dollar Mistake" merujuk pada perkiraan bahwa kesalahan ini telah menyebabkan kerugian yang sangat besar, baik dari segi biaya pengembangan, pemeliharaan, perbaikan bug, hingga kegagalan sistem. Jika ditotal dari seluruh perangkat lunak di dunia yang terkena dampak, nilainya bisa mencapai miliaran dolar.
+
+### Berapa Prana Menarik
+
+- [Null Reference](https://devot.team/blog/null-reference-exception)
+- [Null or Not to Null](https://medium.com/@dcook_net/to-null-or-not-to-null-304571effc80)
 
 ## Skenario
 
