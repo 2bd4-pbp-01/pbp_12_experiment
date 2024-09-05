@@ -28,6 +28,12 @@ Dalam C++, memori dialokasikan secara dinamis menggunakan operator `new` dan har
 - **Penggunaan Struktur Data yang Kompleks:** Menggunakan struktur data seperti vektor atau daftar untuk menyimpan pointer ke objek dinamis tanpa memastikan bahwa memori yang diacu oleh pointer-pointernya dibebaskan setelah tidak digunakan.
 - **Manajemen Memori yang Buruk:** Kesalahan dalam manajemen memori, seperti kegagalan untuk menghapus objek dalam destructor atau tidak menangani kasus pengecualian dengan baik, juga dapat menyebabkan *memory leak*.
 
+Berikut adalah flowchart proses terjadinya flowchart dalam transaksi:
+
+![TrxMemLeak.png](https://github.com/user-attachments/assets/17dd81bb-afba-45c9-af86-9c13fa6c4898)
+
+
+
 ## 5. Perbandingan Solusi untuk Mengatasi Memory Leak
 
 Dalam konteks bahasa C++, ada beberapa pendekatan untuk mengatasi masalah *memory leak*:
