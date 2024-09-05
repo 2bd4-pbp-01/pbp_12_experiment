@@ -30,7 +30,8 @@ Dalam C++, memori dialokasikan secara dinamis menggunakan operator `new` dan har
 
 Berikut adalah flowchart proses terjadinya flowchart dalam transaksi:
 
-![TrxMemLeak.png](https://github.com/user-attachments/assets/17dd81bb-afba-45c9-af86-9c13fa6c4898)
+![TrxMemLeak](https://github.com/user-attachments/assets/ae7f7fb0-209a-40f2-aad9-dc3f01cc0caf)
+
 
 
 
