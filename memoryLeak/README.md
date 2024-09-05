@@ -40,6 +40,9 @@ Berikut adalah flowchart proses terjadinya flowchart dalam transaksi:
 Dalam konteks bahasa C++, ada beberapa pendekatan untuk mengatasi masalah *memory leak*:
 
 ### 5.1. Pembebasan Memori Manual
+
+![TrxMemLeakFree](https://github.com/user-attachments/assets/4ac42075-06a3-4aac-9973-f2f8d65d5925)
+
 - **Deskripsi:** Pendekatan ini mengharuskan pengembang untuk secara manual membebaskan memori yang telah dialokasikan dengan `new` menggunakan `delete`.
 - **Kelebihan:** Memberikan kontrol penuh kepada pengembang atas kapan dan bagaimana memori dibebaskan.
 - **Kekurangan:** Rentan terhadap kesalahan manusia, seperti lupa membebaskan memori atau mencoba membebaskan memori yang sudah dibebaskan sebelumnya, yang dapat menyebabkan kebocoran memori atau bahkan kesalahan yang lebih serius seperti *dangling pointer*.
