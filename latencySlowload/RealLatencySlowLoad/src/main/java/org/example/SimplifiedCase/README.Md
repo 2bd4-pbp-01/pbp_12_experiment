@@ -8,10 +8,10 @@ Masalah latency dan slow load pada situs e-commerce dapat berdampak besar bagi p
 Sebuah contoh kasus nyata terjadi pada Amazon, yang mengalami downtime selama 40 menit pada tahun 2013 dan menyebabkan kerugian sekitar $5 juta. Kasus ini memperlihatkan betapa krusialnya optimasi performa situs dalam lingkungan e-commerce yang sangat kompetitif​(Realm Digital).Selain itu, salah satu penyebab utama latency adalah overload server, yang sering terjadi selama periode promo atau musim liburan ketika lonjakan lalu lintas online terjadi​
 
 ## Apa itu Latency dan Slow Load?
-![image](https://img.ifunny.co/images/b335964b204f204ecb19d82eae52520980dabaa99c6c850f11c0d2b3043a4198_1.jpg)
+<img src="https://img.ifunny.co/images/b335964b204f204ecb19d82eae52520980dabaa99c6c850f11c0d2b3043a4198_1.jpg" alt="image" width="300"/>
 Latency adalah waktu tunda yang terjadi antara saat permintaan dikirim oleh pengguna hingga respons diterima dari server. Latency sering diukur dalam milidetik dan dipengaruhi oleh berbagai faktor seperti jarak fisik antara server dan pengguna, kecepatan jaringan, dan beban kerja server. Semakin tinggi latency, semakin lama waktu yang dibutuhkan untuk memuat data.
 
-![image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm8hMc4e776C24CX9E5-vM5fZAOnz_X3B_NZDevnOrxxPFTAsvQMlBOl_dbLA3daBhCEI&usqp=CAU)
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm8hMc4e776C24CX9E5-vM5fZAOnz_X3B_NZDevnOrxxPFTAsvQMlBOl_dbLA3daBhCEI&usqp=CAU" alt="image" width="300"/>
 Slow load adalah masalah ketika sebuah situs web atau aplikasi membutuhkan waktu yang lama untuk memuat keseluruhan halaman atau elemen-elemen tertentu. Ini biasanya disebabkan oleh server yang overload, file yang terlalu besar, query database yang tidak efisien, atau infrastruktur jaringan yang kurang optimal. Slow load secara langsung mempengaruhi pengalaman pengguna dan dapat menyebabkan mereka meninggalkan situs.
 
 ### Metode yang Dapat Menyelesaikan Latency dan Slow Load
