@@ -11,6 +11,7 @@ Dalam pengembangan perangkat lunak, terutama pada sistem yang menangani transaks
 ### Beberapa Pranala Menarik
 
 [Deep Diving Memory Leak In A Clojure Application](https://blog.gojek.io/deep-diving-memory-leak-in-a-clojure-application/)
+
 [How many millions of dollars enterprises waste due to Garbage collection?](https://medium.com/@marketing_864/how-many-millions-of-dollars-enterprises-waste-due-to-garbage-collection-737993df259a)
 
 ## 3. Alasan Terjadinya Memory Leak dalam Konteks Transaksi
