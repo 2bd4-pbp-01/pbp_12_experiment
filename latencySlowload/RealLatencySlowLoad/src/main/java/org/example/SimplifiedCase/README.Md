@@ -1,7 +1,5 @@
 # Latency dan Slow Load
 
-
-
 ## Pendahuluan
 Masalah latency dan slow load pada situs e-commerce dapat berdampak besar bagi perusahaan, baik dari segi pendapatan maupun kepuasan pelanggan. Misalnya, penelitian menunjukkan bahwa 47% pelanggan mengharapkan situs web e-commerce untuk memuat dalam waktu kurang dari dua detik. Jika memuat lebih dari tiga detik, 57% dari mereka akan meninggalkan situs, dan 80% dari mereka mungkin tidak akan kembali lagi. Dampak ini bisa mengakibatkan penurunan tingkat konversi hingga 7%, yang berarti potensi kerugian pendapatan hingga ribuan dolar per tahun bagi e-commerce dengan volume transaksi besar​
 
@@ -16,10 +14,30 @@ Slow load adalah masalah ketika sebuah situs web atau aplikasi membutuhkan waktu
 
 ### Metode yang Dapat Menyelesaikan Latency dan Slow Load
 Pengurangan Waktu Tunda (Delay) = Mengurangi waktu tunda langsung yang diterapkan selama pemrosesan permintaan. Ini adalah pendekatan langsung untuk mengurangi latency dalam simulasi.
+```java
+Thread.sleep(1000); // Mengurangi waktu tunda dari 5 detik menjadi 1 detik
+```
 Caching = Caching menyimpan hasil dari permintaan sebelumnya untuk mempercepat akses jika permintaan yang sama datang kembali. Ini mengurangi waktu yang diperlukan untuk memproses permintaan yang sama di masa depan.
-Thread Pool Dinamis = Menggunakan thread pool dinamis untuk mengelola thread secara efisien, memungkinkan aplikasi menangani banyak permintaan secara bersamaan dan mengurangi waktu tunggu.
-Pemrosesan Asinkron = Memproses permintaan secara asinkron menggunakan CompletableFuture untuk memungkinkan pemrosesan paralel dan menghindari pemblokiran thread utama.
+```java
+ private static HashMap<Integer, String> cache = new HashMap<>(); // Simulasi cache
 
+if (cache.containsKey(requestId)) {
+    System.out.println("Request " + requestId + " served from cache.");
+    return;
+}
+```
+Thread Pool Dinamis = Menggunakan thread pool dinamis untuk mengelola thread secara efisien, memungkinkan aplikasi menangani banyak permintaan secara bersamaan dan mengurangi waktu tunggu.
+```java
+private static ExecutorService executorService = Executors.newCachedThreadPool();
+```
+Pemrosesan Asinkron = Memproses permintaan secara asinkron menggunakan CompletableFuture untuk memungkinkan pemrosesan paralel dan menghindari pemblokiran thread utama.
+```java
+CompletableFuture.runAsync(() -> handleRequest(requestId), executorService)
+    .exceptionally(ex -> {
+        System.out.println("Error handling request " + requestId + ": " + ex.getMessage());
+        return null;
+    });
+```
 
 ### Mengapa Mengatasi Latency dan Slow Load Penting?
 Pengalaman Pengguna: Latency tinggi atau load lambat bisa membuat pengguna frustasi dan meninggalkan transaksi, mengurangi kepuasan pelanggan.
@@ -33,3 +51,12 @@ Flowchart Program Solution
 ![image](../SimplifiedCase/image/FlowChartSolution.drawio.png)
 
 # Contoh Penyelesaian Latency dan Slow Load dalam Java
+Misalkan ada 1000 Permintaan Request
+```java
+ private static final int MAX_REQUESTS = 1000; 
+```
+Contoh output program yang mengalami masalah latency dan slow load
+![image](../SimplifiedCase/image/Output_1.png)
+
+Contoh output program yang menyelesaikan masalah latency dan slow load
+![image](../SimplifiedCase/image/Output_2.png)
