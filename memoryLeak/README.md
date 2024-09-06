@@ -10,8 +10,8 @@ Dalam pengembangan perangkat lunak, terutama pada sistem yang menangani transaks
 
 ### Beberapa Pranala Menarik
 
-https://blog.gojek.io/deep-diving-memory-leak-in-a-clojure-application/
-https://netflixtechblog.com/formulating-out-of-memory-kill-prediction-on-the-netflix-app-as-a-machine-learning-problem-989599029109
+[Deep Diving Memory Leak In A Clojure Application](https://blog.gojek.io/deep-diving-memory-leak-in-a-clojure-application/)
+[How many millions of dollars enterprises waste due to Garbage collection?](https://medium.com/@marketing_864/how-many-millions-of-dollars-enterprises-waste-due-to-garbage-collection-737993df259a)
 
 ## 3. Alasan Terjadinya Memory Leak dalam Konteks Transaksi
 
