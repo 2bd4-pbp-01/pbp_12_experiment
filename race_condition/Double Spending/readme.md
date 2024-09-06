@@ -4,8 +4,37 @@
 
 Race condition adalah masalah yang terjadi ketika hasil dari suatu program bergantung pada urutan atau waktu kejadian tertentu yang berjalan bersamaan. Dalam konteks transaksi digital atau pengelolaan sumber daya, race condition dapat menyebabkan masalah serius seperti **double spending** atau kesalahan pengelolaan inventaris.
 
-![explain-race-condition](../output/golang_race1/WhatsApp%20Image%202024-08-30%20at%2012.16.50_d5b95014.jpg)
-## Contoh Kasus: Mengambil Barang dengan Race Condition
+<table> 
+  <tr> 
+    <td><img src="../output/golang_race1/condition2.png" style="width:auto; height:auto;" /></td> 
+    <td><img src="../output/golang_race1/proses.png" style="width:auto; height:auto;" /></td> 
+  </tr> 
+</table>
+
+## Contoh Kasus
+
+### Kasus Yang Pernah Terjadi 
+
+* Twitter duplicate tweets issue 
+
+Masalah terkait duplicate tweets di Twitter pada 2012 disebabkan oleh race condition. Kronologi masalahnya terjadi ketika beberapa pengguna mengirim tweet bersamaan, dan sistem Twitter tidak bisa menangani permintaan dengan baik. Akibatnya, tweet yang sama muncul lebih dari sekali. Race condition terjadi karena dua proses mencoba memperbarui status tweet pada saat yang sama tanpa adanya mekanisme penguncian (locking) yang efektif, sehingga menyebabkan hasil yang tidak diharapkan, seperti tweet ganda yang terlihat oleh pengguna. Twitter melakukan penangan dengan membuat peraturan untuk Limit duplikat Tweet. [Informasi Sumber](https://www.socialmediatoday.com/news/twitter-implements-new-rules-to-limit-the-reach-of-duplicated-tweets/623531 "Twitter Implements Limit Duplicate Tweets")
+
+
+
+
+### Kasus Yang Rentan 
+* Kasus Shopee 9.9 pada 2020
+
+Shopee pernah menghadapi masalah di beberapa negara Asia Tenggara saat Shopee 9.9 Super Shopping Day, di mana pelanggan melaporkan bahwa mereka bisa memesan barang yang seharusnya sudah habis. Ini disebabkan oleh lonjakan pesanan yang sangat cepat, yang menyebabkan keterlambatan dalam pembaruan stok.
+[berita](https://manilastandard.net/tech/314490776/shopee-unveils-biggest-9-9-super-shopping-day-with-unbeatable-deals-and-enhanced-shopping-experience.html),
+[sumber](https://seller.shopee.co.id/edu/article/7094/Menghindari-Keterlambatan-Pengiriman-&-Pesanan-Tidak-Terselesaikan),
+[Cara Penagnagan](https://www.humairacorner.com/gagal-checkout-shopee-m11-penyebab-dan-cara-mengatasi/)
+
+
+
+
+
+## Contoh Kasus Experiment: Mengambil Barang dengan Race Condition
 
 Race condition bisa terjadi dalam berbagai situasi yang melibatkan pembelian barang secara bersamaan oleh banyak pengguna. Salah satu contoh yang umum adalah "stock availability" (ketersediaan stok) di mana beberapa pengguna mencoba membeli barang yang sama pada waktu yang bersamaan. Ini bisa menyebabkan masalah jika sistem tidak menangani akses ke data stok dengan benar.
 
