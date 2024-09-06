@@ -1,5 +1,14 @@
 # Latency dan Slow Load
 
+Tranksanksi 
+
+# Daftar Isi
+- [Pendahuluan](#pendahuluan)
+- [Apa itu Latency dan Slow Load?](#apa-itu-latency-dan-slow-load)
+- [ Metode apa yang Dapat Menyelesaikan Latency dan Slow Load?](#metode-yang-dapat-menyelesaikan-latency-dan-slow-load) 
+- [Mengapa Mengatasi Latency dan Slow Load Penting?](#mengapa-mengatasi-latency-dan-slow-load-penting)
+- [Flow Chart](#flow-chart)
+- [Contoh Penyelesaian Latency dan Slow Load dalam Java](#contoh-penyelesaian-latency-dan-slow-load-dalam-java)
 ## Pendahuluan
 Masalah latency dan slow load pada situs e-commerce dapat berdampak besar bagi perusahaan, baik dari segi pendapatan maupun kepuasan pelanggan. Misalnya, penelitian menunjukkan bahwa 47% pelanggan mengharapkan situs web e-commerce untuk memuat dalam waktu kurang dari dua detik. Jika memuat lebih dari tiga detik, 57% dari mereka akan meninggalkan situs, dan 80% dari mereka mungkin tidak akan kembali lagi. Dampak ini bisa mengakibatkan penurunan tingkat konversi hingga 7%, yang berarti potensi kerugian pendapatan hingga ribuan dolar per tahun bagi e-commerce dengan volume transaksi besar​
 
@@ -60,3 +69,9 @@ Contoh output program yang mengalami masalah latency dan slow load
 
 Contoh output program yang menyelesaikan masalah latency dan slow load
 ![image](../SimplifiedCase/image/Output_2.png)
+
+
+# Reference
+- [1] https://www.geeksforgeeks.org/java-thread-sleep-method/
+
+<img alt="Arisu GIF" src="https://media.tenor.com/lR11pvnP7LIAAAAM/aris-blue-archive.gif">
