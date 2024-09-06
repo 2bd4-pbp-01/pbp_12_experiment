@@ -58,7 +58,5 @@ Misalkan ada 1000 Permintaan Request
 Contoh output program yang mengalami masalah latency dan slow load
 ![image](../SimplifiedCase/image/Output_1.png)
 
-![image](https://tenor.com/view/arisu-sakayanagi-classroom-of-the-elite-anime-waifu-gif-26418569)
-
 Contoh output program yang menyelesaikan masalah latency dan slow load
 ![image](../SimplifiedCase/image/Output_2.png)
