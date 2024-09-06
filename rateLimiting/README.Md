@@ -45,6 +45,11 @@ Hasil eksperimen dengan _leaky bucket_ ini hampir mirip dengan token bucket. Tet
 Token Bucket adalah pilihan terbaik untuk aplikasi yang menghadapi lonjakan mendadak karena kemampuannya untuk menangani burst traffic dengan memanfaatkan token yang tersedia.
 Leaky Bucket adalah pilihan yang baik untuk menjaga aliran permintaan yang stabil dan menghindari lonjakan mendadak.
 Fixed Window cocok untuk aplikasi dengan pola lalu lintas yang cukup stabil, meskipun dapat menyebabkan lonjakan tajam.
+
+[Contoh studi kasus riil](https://www.linkedin.com/posts/pt-swamedia-informatika_studi-kasus-api-rate-limiting-activity-7074596314918916096-8Oz_/?originalSubdomain=id)
+
+
+
 Sliding Window adalah yang paling dinamis dan granular, ideal untuk aplikasi dengan pola lalu lintas yang sangat fluktuatif, tetapi memerlukan pengelolaan yang lebih kompleks.
 
                
