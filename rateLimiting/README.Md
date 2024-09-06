@@ -64,7 +64,7 @@ Token Bucket adalah pilihan terbaik untuk aplikasi yang menghadapi lonjakan mend
 Leaky Bucket adalah pilihan yang baik untuk menjaga aliran permintaan yang stabil dan menghindari lonjakan mendadak.
 Fixed Window cocok untuk aplikasi dengan pola lalu lintas yang cukup stabil, meskipun dapat menyebabkan lonjakan tajam.
 
-[Contoh studi kasus riil](https://www.moesif.com/blog/technical/rate-limiting/Best-Practices-for-API-Rate-Limits-and-Quotas-With-Moesif-to-Avoid-Angry-Customers/)
+[Sumber Literatur](https://blog.compliiant.io/api-defense-with-rate-limiting-using-fastapi-and-token-buckets-0f5206fc5029)
 
 
 
