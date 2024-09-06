@@ -42,11 +42,22 @@ Hasil eksperimen dengan _leaky bucket_ ini hampir mirip dengan token bucket. Tet
 ***Sliding Window:*** Memberikan kontrol granular terbaik dan menghindari lonjakan tajam. Cocok untuk aplikasi dengan pola lalu lintas fluktuatif tetapi lebih kompleks untuk diimplementasikan.
 
 ## 5. Flowchart dari keempat algoritma 
+
 ***a. Fixed Window***
+
 <img src="Gambar%20Flowchart\mermaid-diagram-2024-09-06-074227.png">
+
 ***b. Sliding Window***
+
+<img src="Gambar%20Flowchart\mermaid-diagram-2024-09-06-074928.png">
+
 ***c. Token Bucket***
+
+<img src="Gambar%20Flowchart\mermaid-diagram-2024-09-06-075057.png">
+
 ***d. Leaky Bucket***
+
+<img src="Gambar%20Flowchart\mermaid-diagram-2024-09-06-075309.png">
 
 ## 6. Kesimpulan
 Token Bucket adalah pilihan terbaik untuk aplikasi yang menghadapi lonjakan mendadak karena kemampuannya untuk menangani burst traffic dengan memanfaatkan token yang tersedia.
