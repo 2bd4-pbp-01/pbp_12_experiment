@@ -8,6 +8,11 @@ Dalam pengembangan perangkat lunak, terutama pada sistem yang menangani transaks
 
 *Memory leak* adalah masalah dalam pengelolaan memori di mana memori yang telah dialokasikan oleh program tidak dibebaskan setelah selesai digunakan. Hal ini menyebabkan memori tetap teralokasi meskipun objek yang menggunakan memori tersebut tidak lagi diperlukan. Dalam jangka panjang, *memory leak* dapat menghabiskan semua sumber daya memori yang tersedia, menyebabkan penurunan kinerja hingga kegagalan sistem.
 
+### Beberapa Pranala Menarik
+
+https://blog.gojek.io/deep-diving-memory-leak-in-a-clojure-application/
+https://netflixtechblog.com/formulating-out-of-memory-kill-prediction-on-the-netflix-app-as-a-machine-learning-problem-989599029109
+
 ## 3. Alasan Terjadinya Memory Leak dalam Konteks Transaksi
 
 Sistem transaksi, seperti yang digunakan dalam perbankan atau e-commerce, sering kali memproses data dalam jumlah besar dan melibatkan banyak operasi alokasi memori. Transaksi biasanya melibatkan pembuatan objek untuk menyimpan informasi sementara, seperti ID transaksi, nomor rekening, dan jumlah uang yang terlibat. Jika memori yang dialokasikan untuk menyimpan data transaksi ini tidak dibebaskan setelah transaksi selesai, maka sistem akan terus mengalokasikan memori baru untuk transaksi berikutnya tanpa pernah melepaskan memori yang lama, menciptakan *memory leak*.
