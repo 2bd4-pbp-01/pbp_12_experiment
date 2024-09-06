@@ -43,6 +43,7 @@ Hasil eksperimen dengan _leaky bucket_ ini hampir mirip dengan token bucket. Tet
 
 ## 5. Flowchart dari keempat algoritma 
 ***a. Fixed Window***
+<img src="Gambar%20Flowchart\mermaid-diagram-2024-09-06-074227.png">
 ***b. Sliding Window***
 ***c. Token Bucket***
 ***d. Leaky Bucket***
