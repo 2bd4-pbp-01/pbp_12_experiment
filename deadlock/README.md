@@ -54,7 +54,17 @@ Eksperimen ini menunjukkan bagaimana penguncian sumber daya dalam urutan yang ko
 
 ### Urutan Proses Penyelesaian Masalah Deadlock Menggunakan Orderly Locking
 
-- Penyelesaian menggunakan Orderly Locking, salah 1 thread memulai proses terlebih dahulu hingga mengunci resource yang ada, lalu dilanjut Thread lainnya untuk memulai proses locking
+### Penyelesaian menggunakan Orderly Locking,
+- Orderly Locking (atau dikenal sebagai Lock Ordering) adalah salah satu teknik untuk mencegah terjadinya deadlock dalam sistem transaksi. Teknik ini mengharuskan transaksi untuk mengunci sumber daya dalam urutan tertentu yang telah ditentukan sebelumnya, sehingga menghilangkan kemungkinan terjadinya siklus tunggu yang menyebabkan deadlock.
+
+### Konsep Orderly Locking:
+- Penentuan Urutan Penguncian: Semua transaksi dalam sistem harus mengikuti urutan yang sama ketika mengunci sumber daya. Misalnya, jika ada sumber daya A, B, dan C, maka semua transaksi harus mengunci A dulu, lalu B, dan terakhir C, tanpa melompati urutan.
+
+- Menghindari Saling Tunggu (Circular Wait): Karena semua transaksi mengikuti urutan penguncian yang sama, tidak ada transaksi yang akan menunggu sumber daya yang dipegang oleh transaksi lain dalam urutan yang berlawanan. Ini menghilangkan kondisi saling tunggu, yang merupakan salah satu syarat utama terjadinya deadlock.
+
+- Implementasi Mudah: Solusi ini relatif mudah diterapkan dibandingkan dengan deteksi dan pemulihan deadlock, karena hanya memerlukan penyesuaian urutan penguncian sumber daya.
+
+Berikut adalah Urutan Proses dari solusi Orderly Waiting
 
 <p align="center">
  <img src="flowchart\Deadlock Solution.png">
