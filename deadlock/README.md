@@ -51,6 +51,41 @@ Eksperimen ini menunjukkan bagaimana penguncian sumber daya dalam urutan yang ko
  <img src="flowchart\Deadlock Problem.png">
  </p>
 
+## Kapan Kondisi yang tepat untuk menggunakan Orderly Locking
+
+Orderly locking adalah salah satu strategi untuk menghindari deadlock. Deadlock adalah situasi di mana dua atau lebih proses menunggu satu sama lain untuk melepaskan sumber daya, sehingga tidak ada proses yang bisa melanjutkan eksekusi. Strategi orderly locking (penguncian terurut) berfungsi dengan menentukan urutan tetap (atau aturan) untuk memperoleh kunci atau sumber daya sehingga mencegah deadlock terjadi.
+Kondisi yang Tepat untuk Menggunakan Orderly Locking:
+
+   - Terdapat Sumber Daya yang Dibagi Antar Proses: Ketika beberapa proses atau thread mengakses beberapa sumber daya bersama secara bersamaan (misalnya, variabel, file, atau perangkat keras), maka perlu ada mekanisme untuk mengunci sumber daya tersebut. Jika proses mengambil beberapa kunci, ada potensi deadlock jika tidak ada aturan yang jelas tentang urutan mengambil kunci.
+
+  -  Multiple Locks atau Sumber Daya yang Dibutuhkan: Jika setiap proses hanya membutuhkan satu sumber daya, deadlock biasanya tidak terjadi. Namun, jika sebuah proses memerlukan lebih dari satu sumber daya sekaligus, peluang terjadinya deadlock meningkat, terutama ketika proses mencoba mengakses sumber daya dalam urutan yang berbeda-beda.
+
+   - Ketika Ada Potensi untuk Cyclic Waiting: Deadlock sering kali muncul dari situasi di mana proses menunggu kunci yang dipegang oleh proses lain dalam urutan yang tidak teratur, menciptakan lingkaran menunggu yang tidak bisa diselesaikan tanpa mengganggu proses.
+
+   -  Sumber Daya Tersebut Tidak Dapat Dipecah atau Dibagi: Orderly locking bekerja dengan baik ketika sumber daya bersifat eksklusif (tidak dapat dibagi), dan harus diperoleh dalam urutan tertentu untuk menghindari kondisi balapan (race condition) atau inkonsistensi data.
+
+Contoh Detil Kondisi Orderly Locking
+
+Misalkan ada dua proses yang berjalan dalam sebuah aplikasi dan kedua proses tersebut membutuhkan dua sumber daya yang sama. Misalkan sumber daya tersebut adalah File A dan File B. Kedua file ini tidak bisa diakses oleh dua proses sekaligus, jadi proses harus mengunci file saat mereka menggunakannya.
+Kondisi tanpa Orderly Locking (Potensi Deadlock)
+
+   Proses 1 mengunci File A.
+   Proses 2 mengunci File B.
+   Proses 1 sekarang mencoba mengunci File B, tetapi File B sudah dikunci oleh Proses 2.
+   Proses 2 mencoba mengunci File A, tetapi File A sudah dikunci oleh Proses 1.
+
+Ini menciptakan situasi deadlock karena kedua proses menunggu satu sama lain untuk melepaskan sumber daya, dan tidak ada yang bisa melanjutkan eksekusi.
+Kondisi dengan Orderly Locking (Menghindari Deadlock)
+
+Untuk menghindari situasi deadlock di atas, kita dapat menerapkan orderly locking. Kita menentukan urutan penguncian sumber daya, misalnya urutannya adalah File A harus dikunci sebelum File B.
+
+   Proses 1 harus selalu mengunci File A dulu, baru kemudian mengunci File B.
+   Proses 2 juga harus mengikuti aturan yang sama, yaitu mengunci File A dulu sebelum mengunci File B.
+
+Dengan aturan ini, kedua proses selalu mengikuti urutan yang sama saat mengunci sumber daya. Jadi, jika Proses 1 telah mengunci File A, Proses 2 tidak akan pernah bisa mengunci File B sebelum Proses 1 melepaskan kunci File A, sehingga menghindari deadlock.
+Ringkasan
+
+Orderly locking adalah solusi yang efektif dalam situasi di mana banyak proses mengakses beberapa sumber daya bersama yang eksklusif, dan diperlukan lebih dari satu sumber daya dalam waktu yang bersamaan. Dengan menetapkan urutan penguncian yang tetap untuk semua proses, strategi ini mencegah lingkaran tunggu yang menjadi penyebab utama deadlock.
 
 ### Urutan Proses Penyelesaian Masalah Deadlock Menggunakan Orderly Locking
 
