@@ -73,3 +73,81 @@ Transaction scheduling melibatkan pengaturan urutan atau waktu eksekusi transaks
 ## Kesimpulan
 
 Transaction scheduling adalah solusi yang berguna dalam menghindari deadlock, terutama dalam sistem dengan tingkat transaksi yang tinggi atau dengan prioritas transaksi yang berbeda-beda. Solusi ini harus digunakan saat sistem sering menghadapi deadlock, saat ada transaksi dengan prioritas berbeda, atau ketika rollback menjadi terlalu mahal.
+
+---
+
+# Functional Programming dan Eksperimen Transaction Scheduling
+
+## Pengertian Functional Programming (FP)
+
+Functional Programming (FP) adalah paradigma pemrograman yang memperlakukan komputasi sebagai evaluasi fungsi matematika dan menghindari perubahan status serta data mutable (berubah). Beberapa fitur utama dari FP meliputi:
+
+- First-class functions (fungsi yang dapat diperlakukan sebagai nilai)
+- Higher-order functions (fungsi yang dapat menerima atau mengembalikan fungsi lain)
+- Immutability (data yang tidak dapat diubah)
+- Pure functions (fungsi yang selalu memberikan hasil yang sama untuk input yang sama tanpa efek samping)
+
+## Hubungan Functional Programming dengan Eksperimen
+
+Eksperimen ini melibatkan scheduling transaksi dan penanganan deadlock, yang membutuhkan penanganan status dari berbagai transaksi yang bersaing untuk mengakses sumber daya bersama (seperti lock pada seat dan payment). Functional programming berhubungan dengan eksperimen ini dalam beberapa cara:
+
+### Immutability dan Side Effects
+
+- Dalam eksperimen ini, state management (seperti lock pada sumber daya) adalah pusat dari potensi deadlock. FP menekankan immutability, yang berarti data tidak boleh diubah begitu ia diciptakan.
+- Menggunakan FP dapat mengurangi kompleksitas side effects, yaitu perubahan state global, yang sering menjadi penyebab deadlock.
+
+### Concurrency dan Parallelism
+
+- Functional programming sangat cocok untuk sistem concurrent dan parallel karena immutability mencegah race conditions.
+- Dalam eksperimen ini, kita menangani banyak transaksi yang berjalan secara bersamaan. Pendekatan FP bisa membantu membuat sistem lebih aman dari masalah deadlock.
+
+### Higher-Order Functions dan Scheduling
+
+- Eksperimen ini melibatkan penjadwalan transaksi. Higher-order functions memungkinkan pemisahan logika transaksi dan penjadwalan dengan lebih bersih.
+- Dalam FP, Anda bisa membuat fungsi yang menangani transaksi secara murni berdasarkan input dan output tanpa mengubah state global.
+
+## Mengapa Functional Programming Berhubungan dengan Eksperimen ini?
+
+1. **Immutability Menghindari Deadlock**
+   - Deadlock sering terjadi karena dua atau lebih transaksi mencoba mengunci sumber daya dalam urutan yang berbeda.
+   - Dalam pendekatan FP, setiap transaksi dapat dianggap sebagai fungsi murni yang tidak mengubah state sumber daya bersama secara langsung.
+
+2. **Concurrency yang Aman**
+   - Data immutable memungkinkan pemrograman concurrent atau parallel berjalan tanpa risiko deadlock.
+   - Semua transaksi bekerja dengan salinan dari data, yang dapat dievaluasi secara independen.
+
+3. **Modular dan Declarative Code**
+   - FP mendorong pendekatan yang lebih declarative, mendefinisikan "apa yang ingin dilakukan" tanpa terlalu peduli tentang "bagaimana" transaksi diimplementasikan.
+   - Ini membuat kode lebih modular dan lebih mudah dimengerti.
+
+## Mengapa Menggunakan Functional Programming untuk Eksperimen ini?
+
+1. **Mengurangi Kesalahan akibat Side Effects**
+   - Dengan FP, kita meminimalkan side effects dan hanya bekerja dengan data immutable.
+   - Hal ini mengurangi potensi kesalahan ketika dua transaksi mencoba memodifikasi sumber daya yang sama.
+
+2. **Concurrency yang Lebih Mudah**
+   - FP menyediakan fitur bawaan seperti lazy evaluation, pure functions, dan higher-order functions yang memudahkan menangani program concurrent atau parallel.
+   - FP memfasilitasi pengelolaan transaksi concurrent dengan lebih aman dan efisien.
+
+3. **Debugging yang Lebih Mudah**
+   - Transaksi dapat dipecah menjadi pure functions yang dapat diuji dan dievaluasi secara independen.
+   - Debugging dan pengelolaan penjadwalan transaksi menjadi lebih mudah dibandingkan dengan pendekatan imperatif.
+
+## Contoh Pendekatan Functional Programming untuk Eksperimen Transaction Scheduling
+
+Dalam pendekatan FP, fokus akan lebih pada:
+
+- Membangun transaksi sebagai pure functions yang tidak mengubah state global.
+- Menggunakan fungsi yang menerima state sistem dan mengembalikan state baru tanpa mengubah sumber daya secara langsung.
+- Menghindari mutable state yang berpotensi menyebabkan deadlock.
+
+Alih-alih menggunakan lock langsung, pendekatan FP akan membuat transaksi hanya membaca data, memproses, dan mengembalikan hasil tanpa mengubah state global.
+
+## Kesimpulan
+
+Functional programming memiliki hubungan erat dengan eksperimen transaction scheduling karena fitur-fiturnya seperti immutability, pure functions, dan concurrency. FP menawarkan solusi yang lebih aman dan modular untuk menangani transaksi concurrent dan mencegah deadlock. Menggunakan pendekatan FP dalam eksperimen ini akan membantu:
+
+- Mengurangi potensi deadlock
+- Meningkatkan modularitas
+- Memudahkan debugging
