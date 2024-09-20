@@ -76,77 +76,51 @@ Transaction scheduling adalah solusi yang berguna dalam menghindari deadlock, te
 
 ---
 
-# Functional Programming dan Eksperimen Transaction Scheduling
+# Abstraksi, OOP, dan Eksperimen Transaction Scheduling
 
-## Pengertian Functional Programming (FP)
+## Apa itu Abstraksi dan OOP?
 
-Functional Programming (FP) adalah paradigma pemrograman yang memperlakukan komputasi sebagai evaluasi fungsi matematika dan menghindari perubahan status serta data mutable (berubah). Beberapa fitur utama dari FP meliputi:
+### Abstraksi
 
-- First-class functions (fungsi yang dapat diperlakukan sebagai nilai)
-- Higher-order functions (fungsi yang dapat menerima atau mengembalikan fungsi lain)
-- Immutability (data yang tidak dapat diubah)
-- Pure functions (fungsi yang selalu memberikan hasil yang sama untuk input yang sama tanpa efek samping)
+Abstraksi adalah konsep dalam pemrograman yang memungkinkan kita untuk menyembunyikan detail implementasi yang kompleks dan hanya menunjukkan fitur penting kepada pengguna. Ini memungkinkan pengembang untuk bekerja dengan representasi yang lebih sederhana dari elemen yang kompleks. Dengan abstraksi, kita dapat fokus pada apa yang dilakukan sistem, daripada bagaimana sistem itu bekerja secara detail. Dalam kode, abstraksi diterapkan melalui penggunaan fungsi, kelas, dan metode yang menyederhanakan pekerjaan pengembang.
 
-## Hubungan Functional Programming dengan Eksperimen
+### Object-Oriented Programming (OOP)
 
-Eksperimen ini melibatkan scheduling transaksi dan penanganan deadlock, yang membutuhkan penanganan status dari berbagai transaksi yang bersaing untuk mengakses sumber daya bersama (seperti lock pada seat dan payment). Functional programming berhubungan dengan eksperimen ini dalam beberapa cara:
+Object-Oriented Programming (OOP) adalah paradigma pemrograman yang menggunakan konsep objek dan kelas untuk menyusun program. Dalam OOP, kelas adalah cetak biru atau template untuk membuat objek. Setiap objek adalah instansiasi dari kelas, yang memiliki data (disebut properti atau atribut) dan perilaku (disebut metode). OOP memungkinkan kita untuk membuat hubungan antar-objek melalui prinsip-prinsip seperti inheritance (pewarisan), polymorphism, encapsulation (pembungkusan), dan abstraction (abstraksi).
 
-### Immutability dan Side Effects
+## Hubungan Abstraksi dan OOP dengan Eksperimen Ini
 
-- Dalam eksperimen ini, state management (seperti lock pada sumber daya) adalah pusat dari potensi deadlock. FP menekankan immutability, yang berarti data tidak boleh diubah begitu ia diciptakan.
-- Menggunakan FP dapat mengurangi kompleksitas side effects, yaitu perubahan state global, yang sering menjadi penyebab deadlock.
+Eksperimen ini menggunakan penjadwalan transaksi (Wait-Die dan Wound-Wait) untuk menghindari deadlock dalam skenario transaksi bersamaan. OOP dan abstraksi berhubungan erat dengan eksperimen ini karena:
 
-### Concurrency dan Parallelism
+1. **Pengelompokan Logika yang Mirip:**
+   Kelas Transaction menyederhanakan operasi transaksi (pemesanan tiket dan pencarian tiket) dengan mengelompokkannya ke dalam satu entitas. Kita tidak perlu memikirkan detail implementasi setiap kali ingin melakukan transaksi; cukup memanggil metode booking atau search.
 
-- Functional programming sangat cocok untuk sistem concurrent dan parallel karena immutability mencegah race conditions.
-- Dalam eksperimen ini, kita menangani banyak transaksi yang berjalan secara bersamaan. Pendekatan FP bisa membantu membuat sistem lebih aman dari masalah deadlock.
+2. **Mengabstraksikan Resource:**
+   Kelas Resource mengelola penguncian (locking) sumber daya seperti seat dan payment. Kita tidak perlu memikirkan detail bagaimana penguncian dilakukan, karena abstraksi ini sudah disediakan oleh kelas Resource.
 
-### Higher-Order Functions dan Scheduling
+3. **Penjadwalan dengan Abstraksi yang Jelas:**
+   Kelas Scheduler menyediakan cara yang jelas dan modular untuk menjalankan berbagai skema penjadwalan seperti Wait-Die dan Wound-Wait. Dengan demikian, kita bisa dengan mudah mengganti strategi penjadwalan hanya dengan mengubah argumen ketika memanggil Scheduler.
 
-- Eksperimen ini melibatkan penjadwalan transaksi. Higher-order functions memungkinkan pemisahan logika transaksi dan penjadwalan dengan lebih bersih.
-- Dalam FP, Anda bisa membuat fungsi yang menangani transaksi secara murni berdasarkan input dan output tanpa mengubah state global.
+## Mengapa Menggunakan Abstraksi dan OOP untuk Eksperimen Ini?
 
-## Mengapa Functional Programming Berhubungan dengan Eksperimen ini?
+1. **Menyederhanakan Kode dan Meningkatkan Reusability:**
+   Dengan menggunakan OOP, kita dapat mendefinisikan transaksi sebagai objek yang dapat dengan mudah digunakan kembali di bagian lain kode. Ini meningkatkan modularitas kode dan memungkinkan kita menghindari pengulangan logika. Misalnya, kita bisa menggunakan kembali metode booking dan search tanpa harus menulis ulang logika.
 
-1. **Immutability Menghindari Deadlock**
-   - Deadlock sering terjadi karena dua atau lebih transaksi mencoba mengunci sumber daya dalam urutan yang berbeda.
-   - Dalam pendekatan FP, setiap transaksi dapat dianggap sebagai fungsi murni yang tidak mengubah state sumber daya bersama secara langsung.
+2. **Isolasi Tanggung Jawab:**
+   OOP memungkinkan kita untuk mengisolasi tanggung jawab dalam kode. Kelas Transaction bertanggung jawab atas operasi transaksi, kelas Resource bertanggung jawab untuk mengelola sumber daya, dan kelas Scheduler bertanggung jawab untuk menangani penjadwalan transaksi. Ini memisahkan logika menjadi bagian-bagian yang mudah dikelola dan dipahami.
 
-2. **Concurrency yang Aman**
-   - Data immutable memungkinkan pemrograman concurrent atau parallel berjalan tanpa risiko deadlock.
-   - Semua transaksi bekerja dengan salinan dari data, yang dapat dievaluasi secara independen.
+3. **Fleksibilitas:**
+   Jika kita ingin menambahkan strategi penjadwalan baru atau tipe resource baru, kita dapat dengan mudah memperluas kode tanpa harus memodifikasi banyak bagian lain. Sebagai contoh, kita bisa menambahkan strategi penjadwalan lain ke dalam kelas Scheduler tanpa mengubah kode transaksi atau resource.
 
-3. **Modular dan Declarative Code**
-   - FP mendorong pendekatan yang lebih declarative, mendefinisikan "apa yang ingin dilakukan" tanpa terlalu peduli tentang "bagaimana" transaksi diimplementasikan.
-   - Ini membuat kode lebih modular dan lebih mudah dimengerti.
+4. **Keterbacaan Kode:**
+   Kode yang menggunakan abstraksi dan OOP lebih mudah dibaca dan dipahami, terutama dalam sistem yang kompleks. Kita dapat melihat hubungan antar-objek dan bagaimana operasi tertentu dilakukan tanpa harus terjebak dalam detail implementasi yang berulang.
 
-## Mengapa Menggunakan Functional Programming untuk Eksperimen ini?
-
-1. **Mengurangi Kesalahan akibat Side Effects**
-   - Dengan FP, kita meminimalkan side effects dan hanya bekerja dengan data immutable.
-   - Hal ini mengurangi potensi kesalahan ketika dua transaksi mencoba memodifikasi sumber daya yang sama.
-
-2. **Concurrency yang Lebih Mudah**
-   - FP menyediakan fitur bawaan seperti lazy evaluation, pure functions, dan higher-order functions yang memudahkan menangani program concurrent atau parallel.
-   - FP memfasilitasi pengelolaan transaksi concurrent dengan lebih aman dan efisien.
-
-3. **Debugging yang Lebih Mudah**
-   - Transaksi dapat dipecah menjadi pure functions yang dapat diuji dan dievaluasi secara independen.
-   - Debugging dan pengelolaan penjadwalan transaksi menjadi lebih mudah dibandingkan dengan pendekatan imperatif.
-
-## Contoh Pendekatan Functional Programming untuk Eksperimen Transaction Scheduling
-
-Dalam pendekatan FP, fokus akan lebih pada:
-
-- Membangun transaksi sebagai pure functions yang tidak mengubah state global.
-- Menggunakan fungsi yang menerima state sistem dan mengembalikan state baru tanpa mengubah sumber daya secara langsung.
-- Menghindari mutable state yang berpotensi menyebabkan deadlock.
-
-Alih-alih menggunakan lock langsung, pendekatan FP akan membuat transaksi hanya membaca data, memproses, dan mengembalikan hasil tanpa mengubah state global.
+5. **Mengatasi Kompleksitas:**
+   Eksperimen ini melibatkan penjadwalan transaksi dan penguncian sumber daya, yang bisa sangat kompleks. Dengan abstraksi, kita dapat menangani kompleksitas ini dengan membuat kode yang lebih terstruktur dan terorganisir. Abstraksi membantu memecah masalah besar menjadi bagian-bagian kecil yang mudah dipahami.
 
 ## Kesimpulan
 
-Functional programming memiliki hubungan erat dengan eksperimen transaction scheduling karena fitur-fiturnya seperti immutability, pure functions, dan concurrency. FP menawarkan solusi yang lebih aman dan modular untuk menangani transaksi concurrent dan mencegah deadlock. Menggunakan pendekatan FP dalam eksperimen ini akan membantu:
+Dalam eksperimen ini, OOP dan abstraksi membantu menyederhanakan pengelolaan transaksi bersamaan yang melibatkan penguncian sumber daya (seperti seat dan payment) serta penjadwalan untuk mencegah deadlock. Abstraksi memungkinkan kita untuk fokus pada apa yang dilakukan transaksi dan penjadwalan tanpa perlu khawatir tentang bagaimana itu dilakukan. Dengan OOP, kita bisa mengisolasi logika, membuat kode lebih modular, meningkatkan keterbacaan, dan membuat sistem yang mudah diperluas.
 
 - Mengurangi potensi deadlock
 - Meningkatkan modularitas
