@@ -1,4 +1,5 @@
 package main
+
 import (
 	"fmt"
 	"sync"
@@ -6,12 +7,12 @@ import (
 
 var barang = 5
 
-func ambil_barang(wg *sync.WaitGroup, id int) {
+func ambilBarang(wg *sync.WaitGroup, id int) {
 	defer wg.Done()
 	fmt.Printf(" Gorutine ke %d memeriksa jumlah barang...", id)
-	if (barang <= 0) {
+	if barang <= 0 {
 		fmt.Printf("Barang habis\n")
-	}else{
+	} else {
 		fmt.Printf("Barang tersedia mengambil barang \n")
 		barang = barang - 1
 	}
@@ -22,7 +23,7 @@ func main() {
 
 	for i := 1; i <= 10; i++ {
 		wg.Add(1)
-		go ambil_barang(&wg, i)
+		go ambilBarang(&wg, i)
 
 	}
 	wg.Wait() // menunggu proses gorutine selsesai

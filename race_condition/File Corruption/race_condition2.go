@@ -2,37 +2,32 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"sync"
 )
 
-func tulisKeFile(wg *sync.WaitGroup, id int, file *os.File) {
+var counter int // Variabel global yang akan dimodifikasi secara bersamaan
+
+// Fungsi untuk meningkatkan nilai counter
+func increaseCounter(wg *sync.WaitGroup, id int) {
 	defer wg.Done()
 
-	for i := 0; i < 1000; i++ { // Menulis banyak data dengan cepat
-		_, err := file.WriteString(fmt.Sprintf("Goroutine %d menulis baris ke-%d\n", id, i))
-		if err != nil {
-			fmt.Printf("Goroutine %d mengalami kesalahan: %s\n", id, err)
-			return
-		}
+	for i := 0; i < 5; i++ {
+		// Memodifikasi counter secara bersamaan tanpa kunci
+		value := counter
+		value++
+		counter = value
+		fmt.Printf("Goroutine %d meningkatkan counter menjadi %d\n", id, counter)
 	}
 }
 
 func main() {
-	file, err := os.Create("output.txt")
-	if err != nil {
-		fmt.Println("Gagal membuat file:", err)
-		return
-	}
-	defer file.Close()
-
 	var wg sync.WaitGroup
 
 	for i := 1; i <= 5; i++ {
 		wg.Add(1)
-		go tulisKeFile(&wg, i, file)
+		go increaseCounter(&wg, i)
 	}
 
 	wg.Wait()
-	fmt.Println("Penulisan selesai. Periksa output.txt untuk hasilnya.")
+	fmt.Println("Nilai akhir counter:", counter)
 }
