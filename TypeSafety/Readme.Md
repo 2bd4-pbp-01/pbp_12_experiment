@@ -20,7 +20,7 @@ Type safety adalah prinsip dalam pemrograman yang memastikan bahwa program hanya
 - Dalam proyek besar dan kompleks, type safety sangat penting untuk mencegah kesalahan yang dapat mengakibatkan kerugian waktu dan biaya.
 - Membantu tim pengembang bekerja lebih efisien, terutama ketika banyak orang terlibat dan perlu memahami kode satu sama lain.
 
-# STATIC TYPING
+## STATIC TYPING
 
 Static typing adalah pendekatan di mana tipe data dari variabel ditentukan saat waktu kompilasi. Ini berarti bahwa tipe data harus dideklarasikan sebelum digunakan.
 
@@ -37,7 +37,7 @@ Static typing adalah pendekatan di mana tipe data dari variabel ditentukan saat 
 - **Kurang Fleksibel:** Variabel dengan tipe tetap tidak bisa berubah tipenya, membatasi fleksibilitas kode.
 
 
-# DYNAMIC TYPING
+## DYNAMIC TYPING
 Dynamic typing adalah pendekatan di mana tipe data dari variabel ditentukan saat runtime. Ini berarti Anda tidak perlu mendeklarasikan tipe data secara eksplisit.
 
 ***Kelebihan:***
