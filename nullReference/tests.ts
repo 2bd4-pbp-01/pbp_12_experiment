@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { accounts } from "./main";
-// import { findAccountByNumber, transferFunds } from "./problem/transfer";
-import { findAccountByNumber, transferFunds } from "./solution/transfer";
+import { findAccountByNumber, transferFunds } from "./problem/transfer";
+// import { findAccountByNumber, transferFunds } from "./solution/transfer";
 
 test("Cari akun aktif", () => {
   expect(findAccountByNumber("1234567890")).toBe(accounts[0]);

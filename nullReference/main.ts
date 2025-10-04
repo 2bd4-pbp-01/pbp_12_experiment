@@ -1,5 +1,5 @@
-// import { transferFunds } from "./problem/transfer";
-import { transferFunds } from "./solution/transfer";
+import { transferFunds } from "./problem/transfer";
+// import { transferFunds } from "./solution/transfer";
 
 export type Account = {
   accountNumber: string;
